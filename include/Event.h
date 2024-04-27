@@ -14,6 +14,7 @@ public:
     [[nodiscard]] EventType GetType() const {
         return type;
     }
+    virtual ~Event() = 0;
 private:
     EventType type;
 };
