@@ -37,7 +37,7 @@ TEST_CASE("EventHandlerTest") {
 TEST_CASE("EventNodeTest") {
     EventNode node1;
     EventNode node2;
-
+    
     node1.AddNode(&node2);
 
     CHECK(node1.HasNode(&node2));

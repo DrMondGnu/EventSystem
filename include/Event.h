@@ -11,6 +11,8 @@ typedef uint32_t EventType;
 
 class Event {
 public:
+    explicit Event(EventType type);
+
     [[nodiscard]] EventType GetType() const {
         return type;
     }
