@@ -5,7 +5,7 @@
 #ifndef EVENTSYSTEM_EVENT_H
 #define EVENTSYSTEM_EVENT_H
 
-#include <type_traits>
+#include <concepts>
 // TODO: allow customizing evenType size
 typedef uint32_t EventType;
 

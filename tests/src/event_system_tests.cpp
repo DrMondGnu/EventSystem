@@ -12,6 +12,8 @@
 
 class TestEvent : public Event {
 public:
+    explicit TestEvent() : Event(1) {}
+
     std::string Name() const {
         return "Test Event";
     }
@@ -37,7 +39,7 @@ TEST_CASE("EventHandlerTest") {
 TEST_CASE("EventNodeTest") {
     EventNode node1;
     EventNode node2;
-    
+
     node1.AddNode(&node2);
 
     CHECK(node1.HasNode(&node2));
