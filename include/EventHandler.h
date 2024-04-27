@@ -12,6 +12,9 @@ requires IsEvent<T>
 class EventHandler {
 public:
     virtual void HandleEvent(const T& e) = 0;
+    void operator()(const T& event) {
+        HandleEvent(event);
+    }
 };
 
 

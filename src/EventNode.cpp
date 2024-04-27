@@ -6,6 +6,9 @@
 
 void EventNode::Dispatch(Event &event)
 {
+    for (const auto &item: listeners) {
+        item->HandleEvent(event);
+    }
     for (auto &item: children) {
         item->Dispatch(event);
     }
@@ -37,4 +40,14 @@ void EventNode::RemoveNode(EventNode *node)
 bool EventNode::HasNode(EventNode *node)
 {
     return children.contains(node);
+}
+
+void EventNode::AddListener(EventListener *listener)
+{
+    listeners.push_back(listener);
+}
+
+void EventNode::RemoveListener(EventListener *listener)
+{
+    listeners.erase(std::remove(listeners.begin(), listeners.end(), listener), listeners.end());
 }

@@ -10,6 +10,9 @@ add_library(EventSystem STATIC
         src/EventNode.cpp
         include/Queue.h
         src/Event.cpp
+        src/FilteredEventNode.cpp
+        include/FilteredEventNode.h
+        include/EventListener.h
 )
 
 target_include_directories(EventSystem INTERFACE include)

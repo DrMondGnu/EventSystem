@@ -6,12 +6,10 @@
 #define EVENTSYSTEM_EVENTNODE_H
 
 #include <set>
+#include <vector>
 #include "Queue.h"
 #include "Event.h"
-
-
-
-
+#include "EventListener.h"
 
 class EventNode {
 public:
@@ -33,10 +31,23 @@ public:
      */
     void RemoveNode(EventNode* node);
 
+    /**
+     * adds listener to this node
+     * @param listener listener to add
+     */
+    void AddListener(EventListener* listener);
+
+    /**
+     * removes listener from this node
+     * @param listener listener to remove
+     */
+    void RemoveListener(EventListener* listener);
+
     bool HasNode(EventNode* node);
 protected:
     EventNode* parent = nullptr;
     std::set<EventNode*> children;
+    std::vector<EventListener*> listeners;
 };
 
 
