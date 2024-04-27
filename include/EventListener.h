@@ -26,7 +26,7 @@ class DefaultEventListener : public EventListener {
 public:
     void HandleEvent(const Event &event) override
     {
-        callHandlers(event);
+        callHandlers((const T&)event);
     }
     /**
      * add handler
@@ -47,9 +47,9 @@ protected:
     /*+
      * calls all attached handlers
      */
-    void callHandlers(const Event& event) {
+    void callHandlers(const T& event) {
         for (auto &item: handlers) {
-            item(event);
+            item->operator()(event);
         }
     }
 
