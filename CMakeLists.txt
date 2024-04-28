@@ -3,6 +3,10 @@ project(EventSystem)
 
 set(CMAKE_CXX_STANDARD 23)
 
+# options
+option(MOND_EVENT_SYSTEM_COMPILE_TESTS "Enable if tests should be added to project and compiled" ON)
+option(MOND_EVENT_SYSTEM_COMPILE_EXAMPLES "Enable if examples should be added to project and compiled" ON)
+
 add_library(EventSystem STATIC
         include/Event.h
         include/EventHandler.h
@@ -15,6 +19,14 @@ add_library(EventSystem STATIC
         include/EventListener.h
 )
 
-target_include_directories(EventSystem INTERFACE include)
+target_include_directories(EventSystem INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-add_subdirectory(tests)
+# Tests
+if(MOND_EVENT_SYSTEM_COMPILE_TESTS)
+    add_subdirectory(tests)
+endif ()
+
+# Examples
+if(MOND_EVENT_SYSTEM_COMPILE_EXAMPLES)
+    add_subdirectory(examples)
+endif ()

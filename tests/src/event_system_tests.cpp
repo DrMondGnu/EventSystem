@@ -21,6 +21,15 @@ public:
     }
 };
 
+class TestEvent2 : public Event {
+public:
+    explicit TestEvent2() : Event(1) {}
+
+    std::string Name() const {
+        return "Test Event";
+    }
+};
+
 class TestEventHandler : public EventHandler<TestEvent>{
 public:
     bool Handled = false;
@@ -58,6 +67,7 @@ TEST_CASE("EventNodeTest") {
     CHECK(node1.HasNode(&node2));
 }
 
+
 TEST_CASE("EventListenerTest") {
     EventNode node;
     TestEventListener listener;
@@ -66,5 +76,25 @@ TEST_CASE("EventListenerTest") {
     node.AddListener(&listener);
     node.Dispatch(event);
 
+
+
     CHECK(listener.Handled);
+}
+
+TEST_CASE("DefaultEventListenerTest") {
+    EventNode node;
+    DefaultEventListener<TestEvent> listener;
+    TestEventHandler handler;
+
+    TestEvent testEvent;
+    TestEvent2 testEvent2;
+
+    node.AddListener(&listener);
+    listener.AddHandler(&handler);
+
+    node.Dispatch(testEvent2);
+    CHECK_FALSE(handler.Handled);
+
+    node.Dispatch(testEvent);
+    CHECK(handler.Handled);
 }

@@ -24,9 +24,11 @@ template <typename T>
 requires IsEvent<T>
 class DefaultEventListener : public EventListener {
 public:
+
     void HandleEvent(const Event &event) override
     {
-        callHandlers((const T&)event);
+        if (typeid(T) == typeid(event))
+            callHandlers((const T&)event);
     }
     /**
      * add handler
@@ -55,6 +57,8 @@ protected:
 
     std::vector<EventHandler<T>*> handlers;
 };
+
+
 
 
 #endif //EVENTSYSTEM_EVENTLISTENER_H
