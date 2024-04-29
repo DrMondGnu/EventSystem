@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 23)
 # options
 option(MOND_EVENT_SYSTEM_COMPILE_TESTS "Enable if tests should be added to project and compiled" ON)
 option(MOND_EVENT_SYSTEM_COMPILE_EXAMPLES "Enable if examples should be added to project and compiled" ON)
+option(MOND_EVENT_SYSTEM_ENABLE_NAMESPACE "Enable the namespace of the EventSystem" ON)
 
 add_library(EventSystem STATIC
         include/Event.h
@@ -20,6 +21,11 @@ add_library(EventSystem STATIC
 )
 
 target_include_directories(EventSystem INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
+# Enable namespace
+if(MOND_EVENT_SYSTEM_ENABLE_NAMESPACE)
+    target_compile_definitions(EventSystem PUBLIC MOND_EVENT_SYSTEM_ENABLE_NAMESPACE)
+endif ()
 
 # Tests
 if(MOND_EVENT_SYSTEM_COMPILE_TESTS)

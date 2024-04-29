@@ -9,6 +9,11 @@
 #include "Event.h"
 #include "EventHandler.h"
 
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+namespace Mond::EventSystem {
+#endif
+
+
 /**
  * EventListener interface
  */
@@ -58,7 +63,8 @@ protected:
     std::vector<EventHandler<T>*> handlers;
 };
 
-
-
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+}
+#endif
 
 #endif //EVENTSYSTEM_EVENTLISTENER_H

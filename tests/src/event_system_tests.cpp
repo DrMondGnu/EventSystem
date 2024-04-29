@@ -5,12 +5,14 @@
 #include "../doctest.h"
 #include <string>
 
-
 #include "Event.h"
 #include "EventHandler.h"
 #include "EventNode.h"
 #include "EventListener.h"
 
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+using namespace Mond::EventSystem;
+#endif
 
 class TestEvent : public Event {
 public:

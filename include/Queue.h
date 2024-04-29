@@ -5,6 +5,11 @@
 #ifndef EVENTSYSTEM_QUEUE_H
 #define EVENTSYSTEM_QUEUE_H
 
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+namespace Mond::EventSystem {
+#endif
+
+
 template <typename T>
 class Queue {
 public:
@@ -33,4 +38,9 @@ public:
 protected:
     Node* head;
 };
+
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+}
+#endif
+
 #endif //EVENTSYSTEM_QUEUE_H
