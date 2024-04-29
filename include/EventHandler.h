@@ -7,6 +7,11 @@
 
 #include "Event.h"
 
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+namespace Mond::EventSystem {
+#endif
+
+
 template <typename T>
 requires IsEvent<T>
 class EventHandler {
@@ -17,5 +22,8 @@ public:
     }
 };
 
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+}
+#endif
 
 #endif //EVENTSYSTEM_EVENTHANDLER_H

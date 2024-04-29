@@ -8,6 +8,10 @@
 #include <EventListener.h>
 #include <EventNode.h>
 
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+using namespace Mond::EventSystem;
+#endif
+
 enum MouseClickType {
     // I recommend to leave 0 for unchecked Events or typeless Events
     MouseLeftClick = 1,

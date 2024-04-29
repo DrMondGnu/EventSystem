@@ -3,6 +3,10 @@
 //
 #include "../include/EventNode.h"
 
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+namespace Mond::EventSystem {
+#endif
+
 
 void EventNode::Dispatch(Event &event)
 {
@@ -51,3 +55,7 @@ void EventNode::RemoveListener(EventListener *listener)
 {
     listeners.erase(std::remove(listeners.begin(), listeners.end(), listener), listeners.end());
 }
+
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+}
+#endif

@@ -8,6 +8,11 @@
 #include <functional>
 #include "EventNode.h"
 
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+namespace Mond::EventSystem {
+#endif
+
+
 class FilteredEventNode : public EventNode {
 public:
     using Filter = std::function<bool(const Event&)>;
@@ -20,5 +25,8 @@ protected:
     Filter filter;
 };
 
+#ifdef MOND_EVENT_SYSTEM_ENABLE_NAMESPACE
+}
+#endif
 
 #endif //EVENTSYSTEM_FILTEREDEVENTNODE_H
